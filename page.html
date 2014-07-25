@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link href="style.css" rel="stylesheet" type="text/css" />
+
+     <script src="js/lib/angular.min.js"></script>
+     <script src="js/fea-app.js"></script>
+
+  </head>
+  <body ng-app="feaApp">
+
+  <!--
+    I can't use web-server in this task. So I decided
+    to use this hack. Instead of creating separate *.html
+    file for each custom directive, you can add script
+    with type="text/ng-template" and  id="dirName.html".
+     -->
+  <script type="text/ng-template" id="box.html">
+      <div class="box">
+          deb: {{array}}
+          <button class="addButton" ng-click="addNewRow()">Добавить</button>
+          <div>
+              <fea-row ng-repeat="value in array" />
+          </div>
+
+          <div class="sum"><span>Итого: {{sum(array)}}</span></div>
+      </div>
+  </script>
+
+  <script type="text/ng-template" id="row.html">
+      <div class="row">
+          <div class="row-in-view" ng-hide="editing">
+              <div><span>{{value}}</span></div>
+              <div><a>Удалить</a></div>
+          </div>
+          <div class="row-in-edit" ng-show="editing">
+              <div><input type="text" value="{{value}}"></div>
+              <div><button>Сохранить</button></div>
+          </div>
+      </div>
+  </script>
+
+  <!--
+    Main part
+  -->
+    <fea-box />
+  </body>
+</html>
