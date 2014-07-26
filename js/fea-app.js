@@ -28,7 +28,7 @@ feaApp.directive('feaBox', function () {
             $scope.sum = function(array) {
                 var acc = 0;
                 for(var i = 0; i < array.length; ++i) {
-                    acc += array[i];
+                    acc += array[i].value;
                 }
                 return acc;
             }
