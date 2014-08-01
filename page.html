@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<link href="style.css" rel="stylesheet" type="text/css" />
+      <meta charset="utf-8">
+      <link href="style.css" rel="stylesheet" type="text/css" />
 
      <script src="js/lib/angular.min.js"></script>
      <script src="js/fea-app.js"></script>
@@ -17,8 +18,10 @@
      -->
   <script type="text/ng-template" id="box.html">
       <div class="box">
-          deb: {{array}} <br />
-          <button class="addButton" ng-click="addNewRow()">Добавить</button>
+          <!--deb: {{array}} <br /-->
+          <div class="addButton">
+              <button  ng-click="addNewRow()">Добавить строчку</button>
+          </div>
           <div>
               <fea-row ng-repeat="value in array" value="value"/>
           </div>
@@ -30,12 +33,12 @@
   <script type="text/ng-template" id="row.html">
       <div class="row">
           <div class="row-in-view" ng-hide="editing">
-              <div><span>{{value.value}}</span></div>
-              <div><a ng-click="deleteRow()">Удалить</a></div>
+              <div class="row-in-view-value" ng-click="edit()"><span>{{value.value}}</span></div>
+              <div class="row-in-view-delete"><a ng-click="deleteRow()">Удалить</a></div>
           </div>
           <div class="row-in-edit" ng-show="editing">
-              <div><input type="text" value="{{value.value}}"></div>
-              <div><button ng-click="save()">Сохранить</button></div>
+              <div class="row-in-edit-input"><input type="text" ng-model="value.value"></div>
+              <div class="row-in-edit-button"><button ng-click="save()">Сохранить</button></div>
           </div>
       </div>
   </script>

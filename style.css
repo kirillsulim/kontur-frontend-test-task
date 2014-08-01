@@ -2,3 +2,73 @@
 	padding-left: 20px;
 	padding-top: 20px;
 }
+
+.sum {
+    font-family: Arial, Sans-serif;
+    font-weight: bolder;
+    clear: both;
+    padding: 10px;
+    width: 160px;
+    text-align: right;
+}
+
+.addButton {
+    width: 160px;
+    text-align: right;
+}
+
+.row {
+    clear: both;
+    padding: 5px;
+}
+
+.row-in-view {
+}
+
+.row-in-view:hover {
+    cursor: pointer;
+    background-color: deepskyblue;
+}
+
+
+.row-in-view-value {
+    float: left;
+    padding: 5px;
+    width: 150px;
+    text-align: right;
+}
+
+.row-in-view-delete {
+    float: left;
+    padding: 5px;
+    width: 150px;
+}
+
+.row-in-view-delete>a {
+    color: blue;
+    text-decoration-style: dashed;
+    text-decoration-color: blue;
+    text-decoration-line: underline;
+}
+
+.row-in-edit {
+
+}
+
+.row-in-edit-input {
+    float: left;
+    padding: 5px;
+    width: 150px;
+}
+
+.row-in-edit-input>input {
+    width: 150px;
+}
+
+.row-in-edit-button {
+    float: left;
+    padding: 5px;
+    width: 150px;
+}
+
+

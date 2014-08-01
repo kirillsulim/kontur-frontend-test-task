@@ -21,7 +21,7 @@ feaApp.directive('feaBox', function () {
             $scope.addNewRow = function () {
                 var newValue = {
                     index: ++$scope.index,
-                    value: '12.5'
+                    value: ''
                 };
                 $scope.array.unshift(newValue);
             };
@@ -29,7 +29,7 @@ feaApp.directive('feaBox', function () {
             $scope.sum = function(array) {
                 var acc = 0;
                 for(var i = 0; i < array.length; ++i) {
-                    var val = parseFloat(array[i].value);
+                    var val = parseFloat(array[i].value.replace(' ',''));
                     if (isFinite(val))
                     {
                         acc += val;
@@ -75,6 +75,10 @@ feaApp.directive('feaRow', function () {
 
             $scope.save = function() {
                 $scope.editing = false;
+            };
+
+            $scope.edit = function() {
+                $scope.editing = true;
             };
         }
     };
