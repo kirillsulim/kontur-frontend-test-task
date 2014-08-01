@@ -15,22 +15,35 @@ feaApp.directive('feaBox', function () {
     return {
         restrict: 'E',
         templateUrl: 'box.html',
+        replace: true,
 
         controller: function($scope) {
             $scope.addNewRow = function () {
                 var newValue = {
                     index: ++$scope.index,
-                    value: ''
-                }
+                    value: '12.5'
+                };
                 $scope.array.unshift(newValue);
-            },
+            };
 
             $scope.sum = function(array) {
                 var acc = 0;
                 for(var i = 0; i < array.length; ++i) {
-                    acc += array[i].value;
+                    var val = parseFloat(array[i].value);
+                    if (isFinite(val))
+                    {
+                        acc += val;
+                    }
                 }
                 return acc;
+            };
+
+            $scope.deleteRow = function(obj)
+            {
+                var index = $scope.array.indexOf(obj);
+                if(index > -1) {
+                    $scope.array.splice(index,1);
+                }
             }
         },
 
@@ -45,9 +58,24 @@ feaApp.directive('feaRow', function () {
     return {
         restrict: 'E',
         templateUrl: 'row.html',
+        replace: true,
+        require: '^feaBox',
+
+        scope: {
+            value: '='
+        },
 
         controller: function($scope){
             $scope.editing = true;
+
+            $scope.deleteRow = function () {
+                var v = $scope.value;
+                $scope.$parent.deleteRow(v);
+            };
+
+            $scope.save = function() {
+                $scope.editing = false;
+            };
         }
     };
 });

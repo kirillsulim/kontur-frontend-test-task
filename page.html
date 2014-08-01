@@ -17,10 +17,10 @@
      -->
   <script type="text/ng-template" id="box.html">
       <div class="box">
-          deb: {{array}}
+          deb: {{array}} <br />
           <button class="addButton" ng-click="addNewRow()">Добавить</button>
           <div>
-              <fea-row ng-repeat="value in array" />
+              <fea-row ng-repeat="value in array" value="value"/>
           </div>
 
           <div class="sum"><span>Итого: {{sum(array)}}</span></div>
@@ -30,12 +30,12 @@
   <script type="text/ng-template" id="row.html">
       <div class="row">
           <div class="row-in-view" ng-hide="editing">
-              <div><span>{{value}}</span></div>
-              <div><a>Удалить</a></div>
+              <div><span>{{value.value}}</span></div>
+              <div><a ng-click="deleteRow()">Удалить</a></div>
           </div>
           <div class="row-in-edit" ng-show="editing">
-              <div><input type="text" value="{{value}}"></div>
-              <div><button>Сохранить</button></div>
+              <div><input type="text" value="{{value.value}}"></div>
+              <div><button ng-click="save()">Сохранить</button></div>
           </div>
       </div>
   </script>
