@@ -33,12 +33,25 @@ feaApp.directive('feaBox', function () {
         replace: true,
 
         controller: function($scope) {
+            $scope.canScrollDown = false ;
+
+            window.onscroll = function(){
+                $scope.$apply(function() {
+                    $scope.refreshCanScroll();
+                });
+            };
+
+            $scope.refreshCanScroll = function(){
+                $scope.canScrollDown = document.body.clientHeight - window.innerHeight - document.body.scrollTop > 0;
+            };
+
             $scope.addNewRow = function () {
                 var newValue = {
                     index: ++$scope.index,
                     value: ''
                 };
                 $scope.array.unshift(newValue);
+                $scope.refreshCanScroll();
             };
 
             $scope.sum = function(array) {
@@ -59,6 +72,7 @@ feaApp.directive('feaBox', function () {
                 if(index > -1) {
                     $scope.array.splice(index,1);
                 }
+                $scope.refreshCanScroll();
             }
         },
 
@@ -90,7 +104,14 @@ feaApp.directive('feaRow', function () {
 
             $scope.save = function() {
                 $scope.value.value = formatMoney($scope.value.value);
-                $scope.editing = false;
+
+                if($scope.isCorrect($scope.value.value)){
+                    $scope.editing = false;
+                }
+            };
+
+            $scope.isCorrect = function(v) {
+                return v.match(/-?[\d ]+\.?[\d ]*/);
             };
 
             $scope.edit = function() {

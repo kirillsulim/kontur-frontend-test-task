@@ -71,6 +71,7 @@
 
 .row-in-edit-input>input {
     width: 100%;
+    text-align: right;
 }
 
 .row-in-edit-button {
@@ -88,5 +89,22 @@
 }
 
 .sum > span {
+    font-weight: bold;
+}
+
+.sum-alter {
+    margin: 0px;
+    width: 124px;
+    text-align: right;
+    text-wrap: none;
+
+    background-color: white;
+    border: black thick solid;
+    border-bottom: none;
+    position: fixed;
+    bottom: 0px;
+}
+
+.sum-alter > span {
     font-weight: bold;
 }
