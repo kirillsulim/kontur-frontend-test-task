@@ -11,6 +11,21 @@ feaApp.controller('feaController',
         }]
 );
 
+formatMoney = function(str) {
+    str = str.replace(/ /g,'');
+    var i = str.indexOf('.');
+    if(i == -1) {
+        i = str.length;
+    }
+    i -= 3;
+    while (i > 0){
+        str = str.substr(0, i) + ' ' + str.substr(i, str.length);
+        i -= 3;
+    }
+
+    return str;
+}
+
 feaApp.directive('feaBox', function () {
     return {
         restrict: 'E',
@@ -29,13 +44,13 @@ feaApp.directive('feaBox', function () {
             $scope.sum = function(array) {
                 var acc = 0;
                 for(var i = 0; i < array.length; ++i) {
-                    var val = parseFloat(array[i].value.replace(' ',''));
+                    var val = parseFloat(array[i].value.replace(/ /g,''));
                     if (isFinite(val))
                     {
                         acc += val;
                     }
                 }
-                return acc;
+                return formatMoney(acc.toString());
             };
 
             $scope.deleteRow = function(obj)
@@ -74,12 +89,15 @@ feaApp.directive('feaRow', function () {
             };
 
             $scope.save = function() {
+                $scope.value.value = formatMoney($scope.value.value);
                 $scope.editing = false;
             };
 
             $scope.edit = function() {
                 $scope.editing = true;
             };
+
+
         }
     };
 });

@@ -81,9 +81,12 @@
 .sum {
     margin: 5px;
     width: 124px;
-    font-weight: bold;
     text-align: right;
+    text-wrap: none;
 
-    z-index: 100;
-    position: fixed;
+    background-color: white;
+}
+
+.sum > span {
+    font-weight: bold;
 }
