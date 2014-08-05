@@ -1,74 +1,89 @@
-.box {
-	padding-left: 20px;
-	padding-top: 20px;
-}
-
-.sum {
-    font-family: Arial, Sans-serif;
-    font-weight: bolder;
+.clear {
+    display: block;
     clear: both;
-    padding: 10px;
-    width: 160px;
-    text-align: right;
 }
 
 .addButton {
-    width: 160px;
+    margin: 5px;
+}
+
+.box {
+	padding: 20px; /* better looks in chrome */
+    font-family: Arial, Sans-serif;
+}
+
+.sum-label {
+    float: left;
+    margin: 5px;
+    width: 124px;
+    font-weight: bold;
     text-align: right;
 }
 
 .row {
-    clear: both;
-    padding: 5px;
 }
 
 .row-in-view {
+    display: inline-block;
 }
 
 .row-in-view:hover {
     cursor: pointer;
-    background-color: deepskyblue;
+    background-color: lightblue;
 }
 
+.row-in-view:hover > div.row-in-view-delete {
+    display: block;
+}
+
+.row-in-view > div {
+    margin: 5px;
+}
 
 .row-in-view-value {
     float: left;
-    padding: 5px;
-    width: 150px;
+    width: 124px;
     text-align: right;
 }
 
 .row-in-view-delete {
     float: left;
-    padding: 5px;
-    width: 150px;
+    width: 65px;
+    display: none;
 }
 
-.row-in-view-delete>a {
+.row-in-view-delete > span {
     color: blue;
-    text-decoration-style: dashed;
-    text-decoration-color: blue;
-    text-decoration-line: underline;
+    border-bottom: blue dashed thin;
 }
 
 .row-in-edit {
+}
 
+.row-in-edit > div {
+    margin: 5px;
 }
 
 .row-in-edit-input {
     float: left;
-    padding: 5px;
-    width: 150px;
+    width: 124px;
 }
 
 .row-in-edit-input>input {
-    width: 150px;
+    width: 100%;
 }
 
 .row-in-edit-button {
     float: left;
-    padding: 5px;
-    width: 150px;
+    width: 65px;
 }
 
+.sum {
+    margin: 5px;
+    width: 124px;
+    font-weight: bold;
+    text-align: right;
 
+    z-index: 100;
+    position: fixed;
+}

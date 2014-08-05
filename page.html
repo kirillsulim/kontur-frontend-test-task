@@ -23,6 +23,10 @@
               <button  ng-click="addNewRow()">Добавить строчку</button>
           </div>
           <div>
+              <div>
+                  <div class="sum-label"><span>Сумма, р.</span></div>
+                  <div class="clear"></div>
+              </div>
               <fea-row ng-repeat="value in array" value="value"/>
           </div>
 
@@ -34,11 +38,13 @@
       <div class="row">
           <div class="row-in-view" ng-hide="editing">
               <div class="row-in-view-value" ng-click="edit()"><span>{{value.value}}</span></div>
-              <div class="row-in-view-delete"><a ng-click="deleteRow()">Удалить</a></div>
+              <div class="row-in-view-delete"><span><a ng-click="deleteRow()">Удалить</a></span></div>
+              <div class="clear"></div>
           </div>
           <div class="row-in-edit" ng-show="editing">
               <div class="row-in-edit-input"><input type="text" ng-model="value.value"></div>
               <div class="row-in-edit-button"><button ng-click="save()">Сохранить</button></div>
+              <div class="clear"></div>
           </div>
       </div>
   </script>
